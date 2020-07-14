@@ -2,7 +2,6 @@
 
 This is a take-home coding challenge from a top tech company. The spec is providied verbatim.
 
-
 ## Problem
 
 Suppose we have some input data describing a graph of relationships between parents and children over multiple generations. The data is formatted as a list of (parent, child) pairs, where each individual is assigned a unique integer identifier.
@@ -45,4 +44,3 @@ Clarifications:
 * There are no "repeated" ancestors – if two individuals are connected, it is by exactly one path.
 * IDs will always be positive integers.
 * A parent may have any number of children.
-

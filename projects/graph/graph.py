@@ -46,7 +46,7 @@ class Graph:
     while queue.size() != 0:
       vertex = queue.dequeue()
       print(vertex)
-      for edge in self.vertices.get(vertex):
+      for edge in self.get_neighbors(vertex):
         if edge not in discovered:
           discovered.add(edge)
           queue.enqueue(edge)
@@ -62,7 +62,7 @@ class Graph:
     while stack.size() != 0:
       vertex = stack.pop()
       print(vertex)
-      for edge in self.vertices.get(vertex):
+      for edge in self.get_neighbors(vertex):
         if edge not in discovered:
           discovered.add(edge)
           stack.push(edge)
@@ -70,7 +70,7 @@ class Graph:
   def _dft_recursive(self, vertex, discovered):
     print(vertex)
     discovered.add(vertex)
-    for edge in self.vertices.get(vertex):
+    for edge in self.get_neighbors(vertex):
       if edge not in discovered:
         self._dft_recursive(edge, discovered)
 
@@ -98,7 +98,7 @@ class Graph:
       vertex = path[-1]
       if vertex == destination_vertex:
         return path
-      for edge in self.vertices.get(vertex):
+      for edge in self.get_neighbors(vertex):
         if edge not in discovered:
           discovered.add(edge)
           new_path = list(path)
@@ -119,7 +119,7 @@ class Graph:
       vertex = path[-1]
       if vertex == destination_vertex:
         return path
-      for edge in self.vertices.get(vertex):
+      for edge in self.get_neighbors(vertex):
         if edge not in discovered:
           discovered.add(edge)
           new_path = list(path)
@@ -132,7 +132,7 @@ class Graph:
       for edge in path:
         end_path.append(edge)
     discovered.add(vertex)
-    for edge in self.vertices.get(vertex):
+    for edge in self.get_neighbors(vertex):
       if edge not in discovered:
         new_path = list(path)
         new_path.append(edge)
