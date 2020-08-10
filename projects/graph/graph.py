@@ -126,17 +126,16 @@ class Graph:
           new_path.append(edge)
           stack.push(new_path)
 
-  def _dfs_recursive(self, path, destination_vertex, discovered, end_path):
+  def _dfs_recursive(self, path, destination_vertex, discovered):
     vertex = path[-1]
     if vertex == destination_vertex:
-      for edge in path:
-        end_path.append(edge)
+      return path
     discovered.add(vertex)
     for edge in self.get_neighbors(vertex):
       if edge not in discovered:
         new_path = list(path)
         new_path.append(edge)
-        self._dfs_recursive(new_path, destination_vertex, discovered, end_path)
+        self._dfs_recursive(new_path, destination_vertex, discovered)
 
   def dfs_recursive(self, starting_vertex, destination_vertex):
     """
@@ -148,9 +147,7 @@ class Graph:
     """
     discovered = set()
     path = [starting_vertex]
-    end_path = []
-    self._dfs_recursive(path, destination_vertex, discovered, end_path)
-    return end_path
+    return self._dfs_recursive(path, destination_vertex, discovered)
 
 if __name__ == '__main__':
   graph = Graph()  # Instantiate your graph
