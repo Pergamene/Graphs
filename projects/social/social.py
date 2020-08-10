@@ -53,7 +53,7 @@ class SocialGraph:
       for j in range(i+1, num_users+1):
         possible_friends.append((i, j))
     random.shuffle(possible_friends)
-    for i in range(num_users * avg_friendships):
+    for i in range((num_users * avg_friendships) // 2):
       u1, u2 = possible_friends[i]
       self.add_friendship(u1, u2)
 
@@ -86,6 +86,6 @@ class SocialGraph:
 if __name__ == '__main__':
   sg = SocialGraph()
   sg.populate_graph(10, 2)
-  print(sg.friendships)
+  print('FRIENDSHIPS: ', sg.friendships)
   connections = sg.get_all_social_paths(1)
-  print(connections)
+  print('CONNECTIONS: ', connections)
